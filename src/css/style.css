@@ -14,19 +14,7 @@ body {
 .weather__main {
   align-items: center;
   display: flex;
-  height: 100%;
   justify-content: center;
-  width: 100vw;
-}
-
-.weather__night {
-  background-color: var(--color-primary-dark);
-  color: var(--color-high-light);
-}
-
-.weather__container {
-  background-color: var(--color-high-light);
-  color: var(--color-low-dark);
-  padding: var(--spacing_inset-sm);
-  max-width: 550px;
+  height: 100%;
+  width: 100%;
 }
