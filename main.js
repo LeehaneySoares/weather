@@ -1,3 +1,12 @@
 import 'core-js'
 import 'regenerator-runtime'
-import './public/assets/css/style.css'
+
+import './src/css/style.css'
+import './src/css/spacings.css'
+import './src/css/colors.css'
+
+import * as Functions from './src/functions/index'
+
+console.log(Functions.dayTime())
+
+
