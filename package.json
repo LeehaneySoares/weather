@@ -1,9 +1,12 @@
 {
   "name": "weather",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "author": "Leehaney Soares <leehaney.soares@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack -w"
+  },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.19.1",
