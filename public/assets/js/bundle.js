@@ -12,13 +12,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _schema_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./schema.json */ "./src/functions/dayTime/schema.json");
+/* harmony import */ var _schema__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./schema */ "./src/functions/dayTime/schema.js");
 
+var date = new Date();
+var hours = new Intl.DateTimeFormat('pt-BR', {
+  hour: 'numeric',
+  minute: 'numeric',
+  timeZoneName: 'short'
+}).format(date);
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
-  var date = new Date();
-  console.log(new Date().getTimezoneOffset());
   var body = document.querySelector('body');
-  body.style['background-image'] = "url('".concat(_schema_json__WEBPACK_IMPORTED_MODULE_0__.morning, "')");
+  hours >= _schema__WEBPACK_IMPORTED_MODULE_0__["default"].morning.hours && hours < _schema__WEBPACK_IMPORTED_MODULE_0__["default"].afternoon.hours && (body.style['background-image'] = "url('".concat(_schema__WEBPACK_IMPORTED_MODULE_0__["default"].morning.image, "')"));
+  hours >= _schema__WEBPACK_IMPORTED_MODULE_0__["default"].afternoon.hours && hours < _schema__WEBPACK_IMPORTED_MODULE_0__["default"].night.hours && (body.style['background-image'] = "url('".concat(_schema__WEBPACK_IMPORTED_MODULE_0__["default"].afternoon.image, "')"));
+  hours >= _schema__WEBPACK_IMPORTED_MODULE_0__["default"].night.hours && (body.style['background-image'] = "url('".concat(_schema__WEBPACK_IMPORTED_MODULE_0__["default"].night.image, "')"));
 }
 
 /***/ }),
@@ -36,6 +42,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _dayTime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dayTime */ "./src/functions/dayTime/dayTime.js");
 
+
+/***/ }),
+
+/***/ "./src/functions/dayTime/schema.js":
+/*!*****************************************!*\
+  !*** ./src/functions/dayTime/schema.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  morning: {
+    image: './assets/images/morning.jpg',
+    hours: '06:00 BRT'
+  },
+  afternoon: {
+    image: './assets/images/afternoon.jpg',
+    hours: '13:00 BRT'
+  },
+  night: {
+    image: './assets/images/night.jpg',
+    hours: '18:00 BRT'
+  }
+});
 
 /***/ }),
 
@@ -27199,17 +27233,6 @@ function styleTagTransform(css, styleElement) {
 }
 
 module.exports = styleTagTransform;
-
-/***/ }),
-
-/***/ "./src/functions/dayTime/schema.json":
-/*!*******************************************!*\
-  !*** ./src/functions/dayTime/schema.json ***!
-  \*******************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"morning":"./assets/images/morning.jpg","afternoon":"./assets/images/afternoon.jpg","night":"./assets/images/night.jpg"}');
 
 /***/ })
 
