@@ -1,19 +1,34 @@
+import { provider } from './changeBackground'
+import Search from './search'
 import template from './template'
 
 class App extends HTMLElement {
-  #input
-  #title
+  #currentHour
+  #search
+  #query
 
-  get input () {
-    return this.#input ??= ''
+  get currentHour () {
+    return this.#currentHour ??= provider?.currentHour
   }
 
-  get placeHolder () {
-    return this.getAttribute('placeholder')
+  get icon () {
+    return this.shadowRoot.querySelector('img')
+  }
+
+  get input () {
+    return this.shadowRoot.querySelector('input')
+  }
+
+  get search () {
+    return this.#search ??= Search.create(this)
+  }
+
+  get query () {
+    return this.#query ??= ''
   }
   
   get title () {
-    return this.#title ??= ''
+    return this.shadowRoot.querySelector('h1')
   }
 
   constructor () {
@@ -25,15 +40,12 @@ class App extends HTMLElement {
   build () {
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.append(template.content.cloneNode(true))
-    this.#title = this.shadowRoot.querySelector('h1')
-    this.#input = this.shadowRoot.querySelector('input')
     return this
   }
 
   mount () {
     this.title.innerText = this.getAttribute('title')
-    this.input.className = 'weather__input'
-    this.input.setAttribute('placeholder', this.placeHolder)
+    this.icon.src = this.currentHour?.iconSearch
     return this
   }
 

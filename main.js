@@ -9,6 +9,7 @@ import './src/css/shadow.css'
 import './src/css/spacings.css'
 import './src/css/style.css'
 
-import './src/modules/changeBackground'
-import './src/modules/build'
+import './src/modules/changeBackground/dayHours'
+import './src/modules/changeBackground/alterBody'
+import './src/modules/index'
 

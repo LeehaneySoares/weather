@@ -1,44 +1,56 @@
-import dayTime from './dayTime'
+import { provider } from './changeBackground'
 
-const backgroundColor = dayTime().backgroundColor
-const textColor = dayTime().textColor
+const { backgroundColor, textColor } = provider?.currentHour
 
 const style = `
   <style>
     .weather__container {
-      background-color: var(${backgroundColor});
+      background-color: ${backgroundColor};
       border-radius: var(--border-radius-sm);
-      color: var(${textColor});
+      color: ${textColor};
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       padding: var(--spacing_inset-sm);
     }
 
     .weather__title {
-      margin: 0;
+      margin: 0 auto;
       padding-bottom: var(--spacing_inset-xs);
     }
 
-    .weather__search {
+    .weather__form {
       align-items: center;
-      border: var(--border-width-hairline) solid var(${textColor});
+      border: var(--border-width-hairline) solid ${textColor};
       border-radius: var(--border-radius-pill);
-      gap: var(--spacing_inset-nano);
       display: flex;
+      gap: var(--spacing_inset-nano);
+      min-width: 400px;
     }
 
-    .weather__search img {
+    .weather__button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .weather__form img {
       height: 16px;
       padding: var(--spacing_inset-nano);
       width: 16px;
     }
 
-    .weather__search input {
-      background-color: var(${backgroundColor});
+    .weather__search {
+      background-color: ${backgroundColor};
       border: none;
-      color: var(${textColor})
+      color: ${textColor};
+      width: 85%;
     }
 
-    .weather__search input:focus {
-      box-shadow: 0 0 0 0;
+    .weather__search:focus {
+      webkit-box-shadow: 0 0 0px 1000px white inset;
+      background-color: transparent;
+      box-shadow: none;
       outline: 0;
     }
   </style>

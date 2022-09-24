@@ -12,7 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./template */ "./src/modules/template.js");
+/* harmony import */ var _changeBackground__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./changeBackground */ "./src/modules/changeBackground/index.js");
+/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search */ "./src/modules/search/index.js");
+/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./template */ "./src/modules/template.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57,9 +59,13 @@ function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { 
 
 
 
-var _input = /*#__PURE__*/new WeakMap();
 
-var _title = /*#__PURE__*/new WeakMap();
+
+var _currentHour = /*#__PURE__*/new WeakMap();
+
+var _search = /*#__PURE__*/new WeakMap();
+
+var _query = /*#__PURE__*/new WeakMap();
 
 var App = /*#__PURE__*/function (_HTMLElement) {
   _inherits(App, _HTMLElement);
@@ -73,12 +79,17 @@ var App = /*#__PURE__*/function (_HTMLElement) {
 
     _this = _super.call(this);
 
-    _classPrivateFieldInitSpec(_assertThisInitialized(_this), _input, {
+    _classPrivateFieldInitSpec(_assertThisInitialized(_this), _currentHour, {
       writable: true,
       value: void 0
     });
 
-    _classPrivateFieldInitSpec(_assertThisInitialized(_this), _title, {
+    _classPrivateFieldInitSpec(_assertThisInitialized(_this), _search, {
+      writable: true,
+      value: void 0
+    });
+
+    _classPrivateFieldInitSpec(_assertThisInitialized(_this), _query, {
       writable: true,
       value: void 0
     });
@@ -91,23 +102,40 @@ var App = /*#__PURE__*/function (_HTMLElement) {
   }
 
   _createClass(App, [{
-    key: "input",
+    key: "currentHour",
     get: function get() {
       var _classPrivateFieldGet2;
 
-      return (_classPrivateFieldGet2 = _classPrivateFieldGet(this, _input)) !== null && _classPrivateFieldGet2 !== void 0 ? _classPrivateFieldGet2 : _classPrivateFieldSet(this, _input, '');
+      return (_classPrivateFieldGet2 = _classPrivateFieldGet(this, _currentHour)) !== null && _classPrivateFieldGet2 !== void 0 ? _classPrivateFieldGet2 : _classPrivateFieldSet(this, _currentHour, _changeBackground__WEBPACK_IMPORTED_MODULE_0__.provider === null || _changeBackground__WEBPACK_IMPORTED_MODULE_0__.provider === void 0 ? void 0 : _changeBackground__WEBPACK_IMPORTED_MODULE_0__.provider.currentHour);
     }
   }, {
-    key: "placeHolder",
+    key: "icon",
     get: function get() {
-      return this.getAttribute('placeholder');
+      return this.shadowRoot.querySelector('img');
+    }
+  }, {
+    key: "input",
+    get: function get() {
+      return this.shadowRoot.querySelector('input');
+    }
+  }, {
+    key: "search",
+    get: function get() {
+      var _classPrivateFieldGet3;
+
+      return (_classPrivateFieldGet3 = _classPrivateFieldGet(this, _search)) !== null && _classPrivateFieldGet3 !== void 0 ? _classPrivateFieldGet3 : _classPrivateFieldSet(this, _search, _search__WEBPACK_IMPORTED_MODULE_1__["default"].create(this));
+    }
+  }, {
+    key: "query",
+    get: function get() {
+      var _classPrivateFieldGet4;
+
+      return (_classPrivateFieldGet4 = _classPrivateFieldGet(this, _query)) !== null && _classPrivateFieldGet4 !== void 0 ? _classPrivateFieldGet4 : _classPrivateFieldSet(this, _query, '');
     }
   }, {
     key: "title",
     get: function get() {
-      var _classPrivateFieldGet3;
-
-      return (_classPrivateFieldGet3 = _classPrivateFieldGet(this, _title)) !== null && _classPrivateFieldGet3 !== void 0 ? _classPrivateFieldGet3 : _classPrivateFieldSet(this, _title, '');
+      return this.shadowRoot.querySelector('h1');
     }
   }, {
     key: "build",
@@ -115,20 +143,16 @@ var App = /*#__PURE__*/function (_HTMLElement) {
       this.attachShadow({
         mode: 'open'
       });
-      this.shadowRoot.append(_template__WEBPACK_IMPORTED_MODULE_0__["default"].content.cloneNode(true));
-
-      _classPrivateFieldSet(this, _title, this.shadowRoot.querySelector('h1'));
-
-      _classPrivateFieldSet(this, _input, this.shadowRoot.querySelector('input'));
-
+      this.shadowRoot.append(_template__WEBPACK_IMPORTED_MODULE_2__["default"].content.cloneNode(true));
       return this;
     }
   }, {
     key: "mount",
     value: function mount() {
+      var _this$currentHour;
+
       this.title.innerText = this.getAttribute('title');
-      this.input.className = 'weather__input';
-      this.input.setAttribute('placeholder', this.placeHolder);
+      this.icon.src = (_this$currentHour = this.currentHour) === null || _this$currentHour === void 0 ? void 0 : _this$currentHour.iconSearch;
       return this;
     }
   }], [{
@@ -163,10 +187,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/modules/changeBackground.js":
-/*!*****************************************!*\
-  !*** ./src/modules/changeBackground.js ***!
-  \*****************************************/
+/***/ "./src/modules/changeBackground/alterBody.js":
+/*!***************************************************!*\
+  !*** ./src/modules/changeBackground/alterBody.js ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -174,79 +198,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _dayTime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dayTime */ "./src/modules/dayTime/index.js");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./provider */ "./src/modules/changeBackground/provider.js");
 
-
-function changeBackground() {
-  var body = document.querySelector('body');
-  body.style['background-image'] = "url('".concat((0,_dayTime__WEBPACK_IMPORTED_MODULE_0__["default"])().background, "')");
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (changeBackground());
+var body = document.querySelector('body');
+var image = _provider__WEBPACK_IMPORTED_MODULE_0__["default"].currentHour.image;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (body.style['background-image'] = "url('".concat(image, "')"));
 
 /***/ }),
 
-/***/ "./src/modules/dayTime/dayTime.js":
-/*!****************************************!*\
-  !*** ./src/modules/dayTime/dayTime.js ***!
-  \****************************************/
+/***/ "./src/modules/changeBackground/dayHours.js":
+/*!**************************************************!*\
+  !*** ./src/modules/changeBackground/dayHours.js ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _schema__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./schema */ "./src/modules/dayTime/schema.js");
+/* harmony import */ var _formateHours__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./formateHours */ "./src/modules/changeBackground/formateHours.js");
+/* harmony import */ var _hub__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hub */ "./src/modules/changeBackground/hub.js");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./provider */ "./src/modules/changeBackground/provider.js");
 
+
+
+var _ref = [_hub__WEBPACK_IMPORTED_MODULE_1__["default"].MORNING, _hub__WEBPACK_IMPORTED_MODULE_1__["default"].AFTERNOON, _hub__WEBPACK_IMPORTED_MODULE_1__["default"].NIGHT],
+    morning = _ref[0],
+    afternoon = _ref[1],
+    night = _ref[2];
+
+function dayHours() {
+  _formateHours__WEBPACK_IMPORTED_MODULE_0__["default"] >= morning.hours && _formateHours__WEBPACK_IMPORTED_MODULE_0__["default"] < afternoon.hours && Object.assign(_provider__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    currentHour: _hub__WEBPACK_IMPORTED_MODULE_1__["default"].MORNING
+  }), _formateHours__WEBPACK_IMPORTED_MODULE_0__["default"] >= afternoon.hours && _formateHours__WEBPACK_IMPORTED_MODULE_0__["default"] < night.hours && Object.assign(_provider__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    currentHour: _hub__WEBPACK_IMPORTED_MODULE_1__["default"].AFTERNOON
+  }), _formateHours__WEBPACK_IMPORTED_MODULE_0__["default"] >= night.hours && Object.assign(_provider__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    currentHour: _hub__WEBPACK_IMPORTED_MODULE_1__["default"].NIGHT
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dayHours());
+
+/***/ }),
+
+/***/ "./src/modules/changeBackground/formateHours.js":
+/*!******************************************************!*\
+  !*** ./src/modules/changeBackground/formateHours.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 var date = new Date();
-var hours = new Intl.DateTimeFormat('pt-BR', {
+var options = {
   hour: 'numeric',
   minute: 'numeric',
   timeZoneName: 'short'
-}).format(date);
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
-  var actions = {};
-  hours >= _schema__WEBPACK_IMPORTED_MODULE_0__["default"].morning.hours && hours < _schema__WEBPACK_IMPORTED_MODULE_0__["default"].afternoon.hours && Object.assign(actions, {
-    background: _schema__WEBPACK_IMPORTED_MODULE_0__["default"].morning.image,
-    backgroundColor: _schema__WEBPACK_IMPORTED_MODULE_0__["default"].morning.backgroundColor,
-    textColor: _schema__WEBPACK_IMPORTED_MODULE_0__["default"].morning.textColor
-  });
-  hours >= _schema__WEBPACK_IMPORTED_MODULE_0__["default"].afternoon.hours && hours < _schema__WEBPACK_IMPORTED_MODULE_0__["default"].night.hours && Object.assign(actions, {
-    background: _schema__WEBPACK_IMPORTED_MODULE_0__["default"].afternoon.image,
-    backgroundColor: _schema__WEBPACK_IMPORTED_MODULE_0__["default"].afternoon.backgroundColor,
-    textColor: _schema__WEBPACK_IMPORTED_MODULE_0__["default"].afternoon.textColor
-  });
-  hours >= _schema__WEBPACK_IMPORTED_MODULE_0__["default"].night.hours && Object.assign(actions, {
-    background: _schema__WEBPACK_IMPORTED_MODULE_0__["default"].night.image,
-    backgroundColor: _schema__WEBPACK_IMPORTED_MODULE_0__["default"].night.backgroundColor,
-    textColor: _schema__WEBPACK_IMPORTED_MODULE_0__["default"].night.textColor
-  });
-  return actions;
-}
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new Intl.DateTimeFormat('pt-BR', options).format(date));
 
 /***/ }),
 
-/***/ "./src/modules/dayTime/index.js":
-/*!**************************************!*\
-  !*** ./src/modules/dayTime/index.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _dayTime__WEBPACK_IMPORTED_MODULE_0__["default"])
-/* harmony export */ });
-/* harmony import */ var _dayTime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dayTime */ "./src/modules/dayTime/dayTime.js");
-
-
-/***/ }),
-
-/***/ "./src/modules/dayTime/schema.js":
-/*!***************************************!*\
-  !*** ./src/modules/dayTime/schema.js ***!
-  \***************************************/
+/***/ "./src/modules/changeBackground/hub.js":
+/*!*********************************************!*\
+  !*** ./src/modules/changeBackground/hub.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -255,25 +275,132 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  morning: {
+  MORNING: {
     image: './assets/images/morning.jpg',
     hours: '06:00 BRT',
-    backgroundColor: '--color-high-light',
-    textColor: '--color-low-dark'
+    backgroundColor: 'var(--color-high-light)',
+    textColor: 'var(--color-low-dark)',
+    iconSearch: './assets/icons/search.png'
   },
-  afternoon: {
+  AFTERNOON: {
     image: './assets/images/afternoon.jpg',
     hours: '13:00 BRT',
-    backgroundColor: '--color-warning-light',
-    textColor: '--color-low-dark'
+    backgroundColor: 'var(--color-warning-light)',
+    textColor: 'var(--color-high-light)',
+    iconSearch: './assets/icons/search_onColor.png'
   },
-  night: {
+  NIGHT: {
     image: './assets/images/night.jpg',
     hours: '18:00 BRT',
-    backgroundColor: '--color-primary-dark',
-    textColor: '--color-high-light'
+    backgroundColor: 'var(--color-primary-dark)',
+    textColor: 'var(--color-high-light)',
+    iconSearch: './assets/icons/search_onColor.png'
   }
 });
+
+/***/ }),
+
+/***/ "./src/modules/changeBackground/index.js":
+/*!***********************************************!*\
+  !*** ./src/modules/changeBackground/index.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _dayHours__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "provider": () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_1__["default"])
+/* harmony export */ });
+/* harmony import */ var _dayHours__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dayHours */ "./src/modules/changeBackground/dayHours.js");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./provider */ "./src/modules/changeBackground/provider.js");
+
+
+
+/***/ }),
+
+/***/ "./src/modules/changeBackground/provider.js":
+/*!**************************************************!*\
+  !*** ./src/modules/changeBackground/provider.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+
+/***/ }),
+
+/***/ "./src/modules/index.js":
+/*!******************************!*\
+  !*** ./src/modules/index.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _build__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _build__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./build */ "./src/modules/build.js");
+
+
+/***/ }),
+
+/***/ "./src/modules/search/index.js":
+/*!*************************************!*\
+  !*** ./src/modules/search/index.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _search__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./search */ "./src/modules/search/search.js");
+
+
+/***/ }),
+
+/***/ "./src/modules/search/search.js":
+/*!**************************************!*\
+  !*** ./src/modules/search/search.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var Search = /*#__PURE__*/function () {
+  function Search(parent) {
+    _classCallCheck(this, Search);
+
+    console.log(parent);
+  }
+
+  _createClass(Search, null, [{
+    key: "create",
+    value: function create(parent) {
+      return new Search(parent);
+    }
+  }]);
+
+  return Search;
+}();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Search);
 
 /***/ }),
 
@@ -288,11 +415,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _dayTime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dayTime */ "./src/modules/dayTime/index.js");
+/* harmony import */ var _changeBackground__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./changeBackground */ "./src/modules/changeBackground/index.js");
 
-var backgroundColor = (0,_dayTime__WEBPACK_IMPORTED_MODULE_0__["default"])().backgroundColor;
-var textColor = (0,_dayTime__WEBPACK_IMPORTED_MODULE_0__["default"])().textColor;
-var style = "\n  <style>\n    .weather__container {\n      background-color: var(".concat(backgroundColor, ");\n      border-radius: var(--border-radius-sm);\n      color: var(").concat(textColor, ");\n      padding: var(--spacing_inset-sm);\n    }\n\n    .weather__title {\n      margin: 0;\n      padding-bottom: var(--spacing_inset-xs);\n    }\n\n    .weather__search {\n      align-items: center;\n      border: var(--border-width-hairline) solid var(").concat(textColor, ");\n      border-radius: var(--border-radius-pill);\n      gap: var(--spacing_inset-nano);\n      display: flex;\n    }\n\n    .weather__search img {\n      height: 16px;\n      padding: var(--spacing_inset-nano);\n      width: 16px;\n    }\n\n    .weather__search input {\n      background-color: var(").concat(backgroundColor, ");\n      border: none;\n      color: var(").concat(textColor, ")\n    }\n\n    .weather__search input:focus {\n      box-shadow: 0 0 0 0;\n      outline: 0;\n    }\n  </style>\n");
+
+var _provider$currentHour = _changeBackground__WEBPACK_IMPORTED_MODULE_0__.provider === null || _changeBackground__WEBPACK_IMPORTED_MODULE_0__.provider === void 0 ? void 0 : _changeBackground__WEBPACK_IMPORTED_MODULE_0__.provider.currentHour,
+    backgroundColor = _provider$currentHour.backgroundColor,
+    textColor = _provider$currentHour.textColor;
+
+var style = "\n  <style>\n    .weather__container {\n      background-color: ".concat(backgroundColor, ";\n      border-radius: var(--border-radius-sm);\n      color: ").concat(textColor, ";\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      padding: var(--spacing_inset-sm);\n    }\n\n    .weather__title {\n      margin: 0 auto;\n      padding-bottom: var(--spacing_inset-xs);\n    }\n\n    .weather__form {\n      align-items: center;\n      border: var(--border-width-hairline) solid ").concat(textColor, ";\n      border-radius: var(--border-radius-pill);\n      display: flex;\n      gap: var(--spacing_inset-nano);\n      min-width: 400px;\n    }\n\n    .weather__button {\n      background: transparent;\n      border: none;\n      cursor: pointer;\n    }\n\n    .weather__form img {\n      height: 16px;\n      padding: var(--spacing_inset-nano);\n      width: 16px;\n    }\n\n    .weather__search {\n      background-color: ").concat(backgroundColor, ";\n      border: none;\n      color: ").concat(textColor, ";\n      width: 85%;\n    }\n\n    .weather__search:focus {\n      webkit-box-shadow: 0 0 0px 1000px white inset;\n      background-color: transparent;\n      box-shadow: none;\n      outline: 0;\n    }\n  </style>\n");
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (style);
 
 /***/ }),
@@ -309,9 +439,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _style_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.js */ "./src/modules/style.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app */ "./src/modules/app.js");
 
 var template = document.createElement('template');
-template.innerHTML = "\n  ".concat(_style_js__WEBPACK_IMPORTED_MODULE_0__["default"], "\n  <div class=\"weather__container\">\n    <h1 class=\"weather__title\"></h1>\n    <div class=\"weather__search\">\n      <img src=\"./assets/icons/search.png\" />\n      <input type=\"text\" name=\"city\" />\n    </div>\n    <div class=\"weather__display\"></div>\n  </div>\n");
+
+template.innerHTML = "\n  ".concat(_style_js__WEBPACK_IMPORTED_MODULE_0__["default"], "\n  <div class=\"weather__container\">\n    <h1 class=\"weather__title\"></h1>\n    <form class=\"weather__form\">\n      <button type=\"submit\" class=\"weather__button\">\n        <img src=\"./assets/icons/search.png\" />\n      </button>\n      <input class=\"weather__search\" type=\"search\"/>\n    </form>\n  </div>\n");
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (template);
 
 /***/ }),
@@ -27895,8 +28027,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_css_shadow_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./src/css/shadow.css */ "./src/css/shadow.css");
 /* harmony import */ var _src_css_spacings_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./src/css/spacings.css */ "./src/css/spacings.css");
 /* harmony import */ var _src_css_style_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./src/css/style.css */ "./src/css/style.css");
-/* harmony import */ var _src_modules_changeBackground__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./src/modules/changeBackground */ "./src/modules/changeBackground.js");
-/* harmony import */ var _src_modules_build__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./src/modules/build */ "./src/modules/build.js");
+/* harmony import */ var _src_modules_changeBackground_dayHours__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./src/modules/changeBackground/dayHours */ "./src/modules/changeBackground/dayHours.js");
+/* harmony import */ var _src_modules_changeBackground_alterBody__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./src/modules/changeBackground/alterBody */ "./src/modules/changeBackground/alterBody.js");
+/* harmony import */ var _src_modules_index__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./src/modules/index */ "./src/modules/index.js");
+
 
 
 
