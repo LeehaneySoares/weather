@@ -1,11 +1,24 @@
-class Search {
+import storage from './storage'
 
-  constructor (parent) {
-    console.log(parent)
+class Search {
+  #query
+
+  get limit () {
+    return 5
   }
 
-  static create (parent) {
-    return new Search(parent)
+  get query () {
+    return this.#query ??= ''
+  }
+
+  changeQuery (wordSearch) {
+    this.#query = wordSearch
+    storage.geolocation(this)
+    return this
+  }
+
+  static create () {
+    return new Search()
   }
 }
 
