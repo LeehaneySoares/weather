@@ -1,11 +1,11 @@
 import { provider } from './changeBackground'
+import getInputValue from './getInputValue'
 import Search from './search'
 import template from './template'
 
 class App extends HTMLElement {
   #currentHour
   #search
-  #query
 
   get currentHour () {
     return this.#currentHour ??= provider?.currentHour
@@ -22,10 +22,6 @@ class App extends HTMLElement {
   get search () {
     return this.#search ??= Search.create(this)
   }
-
-  get query () {
-    return this.#query ??= ''
-  }
   
   get title () {
     return this.shadowRoot.querySelector('h1')
@@ -40,6 +36,14 @@ class App extends HTMLElement {
   build () {
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.append(template.content.cloneNode(true))
+    this.shadowRoot
+      .querySelector('.weather__form')
+      .addEventListener('submit', (event) => getInputValue(event, this))
+    return this
+  }
+
+  changeSearch (wordSearch) {
+    this.search.changeQuery(wordSearch)
     return this
   }
 
