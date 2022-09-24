@@ -56,4 +56,4 @@ class App extends HTMLElement {
 
 customElements.define('app-interface', App)
 
-export default App
+export default App.create()
