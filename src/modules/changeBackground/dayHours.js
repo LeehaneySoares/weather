@@ -15,7 +15,8 @@ function dayHours () {
     Object.assign(provider, { currentHour: hub.AFTERNOON })
   ),
 
-  formateHours >= night.hours && (
+  formateHours >= night.hours ||
+  formateHours >= night.midNight && (
     Object.assign(provider, { currentHour: hub.NIGHT })
   )
 }
