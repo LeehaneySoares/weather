@@ -16,6 +16,7 @@ export default {
   NIGHT: {
     image: './assets/images/night.jpg',
     hours: '18:00 BRT',
+    midNight: '00:00 BRT',
     backgroundColor: 'var(--color-primary-dark)',
     textColor: 'var(--color-high-light)',
     iconSearch: './assets/icons/search_onColor.png'
