@@ -166,24 +166,7 @@ var App = /*#__PURE__*/function (_HTMLElement) {
 }( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 
 customElements.define('app-interface', App);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
-
-/***/ }),
-
-/***/ "./src/modules/build.js":
-/*!******************************!*\
-  !*** ./src/modules/build.js ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app */ "./src/modules/app.js");
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_app__WEBPACK_IMPORTED_MODULE_0__["default"].create());
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App.create());
 
 /***/ }),
 
@@ -343,9 +326,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _build__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _app__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _build__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./build */ "./src/modules/build.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app */ "./src/modules/app.js");
 
 
 /***/ }),
@@ -422,7 +405,7 @@ var _provider$currentHour = _changeBackground__WEBPACK_IMPORTED_MODULE_0__.provi
     backgroundColor = _provider$currentHour.backgroundColor,
     textColor = _provider$currentHour.textColor;
 
-var style = "\n  <style>\n    .weather__container {\n      background-color: ".concat(backgroundColor, ";\n      border-radius: var(--border-radius-sm);\n      color: ").concat(textColor, ";\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      padding: var(--spacing_inset-sm);\n    }\n\n    .weather__title {\n      margin: 0 auto;\n      padding-bottom: var(--spacing_inset-xs);\n    }\n\n    .weather__form {\n      align-items: center;\n      border: var(--border-width-hairline) solid ").concat(textColor, ";\n      border-radius: var(--border-radius-pill);\n      display: flex;\n      gap: var(--spacing_inset-nano);\n      min-width: 400px;\n    }\n\n    .weather__button {\n      background: transparent;\n      border: none;\n      cursor: pointer;\n    }\n\n    .weather__form img {\n      height: 16px;\n      padding: var(--spacing_inset-nano);\n      width: 16px;\n    }\n\n    .weather__search {\n      background-color: ").concat(backgroundColor, ";\n      border: none;\n      color: ").concat(textColor, ";\n      width: 85%;\n    }\n\n    .weather__search:focus {\n      webkit-box-shadow: 0 0 0px 1000px white inset;\n      background-color: transparent;\n      box-shadow: none;\n      outline: 0;\n    }\n  </style>\n");
+var style = "\n  <style>\n    .weather__container {\n      background-color: ".concat(backgroundColor, ";\n      border-radius: var(--border-radius-sm);\n      color: ").concat(textColor, ";\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      margin: 0 auto;\n      padding: var(--spacing_inset-sm);\n    }\n\n    .weather__title {\n      margin: 0 auto;\n      padding-bottom: var(--spacing_inset-xs);\n    }\n\n    .weather__form {\n      align-items: center;\n      border: var(--border-width-hairline) solid ").concat(textColor, ";\n      border-radius: var(--border-radius-pill);\n      display: flex;\n      gap: var(--spacing_inset-nano);\n      min-width: 400px;\n    }\n\n    .weather__button {\n      background: transparent;\n      border: none;\n      cursor: pointer;\n    }\n\n    .weather__form img {\n      height: 16px;\n      padding: var(--spacing_inset-nano);\n      width: 16px;\n    }\n\n    .weather__search {\n      background-color: ").concat(backgroundColor, ";\n      border: none;\n      color: ").concat(textColor, ";\n      width: 85%;\n    }\n\n    .weather__search:focus {\n      webkit-box-shadow: 0 0 0px 1000px white inset;\n      background-color: transparent;\n      box-shadow: none;\n      outline: 0;\n    }\n  </style>\n");
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (style);
 
 /***/ }),
@@ -26311,7 +26294,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  height: 100vh;\n}\n\n.weather__main {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  height: 100%;\n  width: 100%;\n}", "",{"version":3,"sources":["webpack://./src/css/style.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,2BAA2B;EAC3B,4BAA4B;EAC5B,sBAAsB;EACtB,aAAa;AACf;;AAEA;EACE,mBAAmB;EACnB,aAAa;EACb,uBAAuB;EACvB,YAAY;EACZ,WAAW;AACb","sourcesContent":["* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  height: 100vh;\n}\n\n.weather__main {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  height: 100%;\n  width: 100%;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  height: 100vh;\n}\n\n.weather__main {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  height: 100%;\n  margin: 0 auto;\n  max-width: 800px;\n  padding: 0 var(--spacing_inset-xs);\n  width: 100%;\n}", "",{"version":3,"sources":["webpack://./src/css/style.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,2BAA2B;EAC3B,4BAA4B;EAC5B,sBAAsB;EACtB,aAAa;AACf;;AAEA;EACE,mBAAmB;EACnB,aAAa;EACb,uBAAuB;EACvB,YAAY;EACZ,cAAc;EACd,gBAAgB;EAChB,kCAAkC;EAClC,WAAW;AACb","sourcesContent":["* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  height: 100vh;\n}\n\n.weather__main {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  height: 100%;\n  margin: 0 auto;\n  max-width: 800px;\n  padding: 0 var(--spacing_inset-xs);\n  width: 100%;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28029,7 +28012,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_css_style_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./src/css/style.css */ "./src/css/style.css");
 /* harmony import */ var _src_modules_changeBackground_dayHours__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./src/modules/changeBackground/dayHours */ "./src/modules/changeBackground/dayHours.js");
 /* harmony import */ var _src_modules_changeBackground_alterBody__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./src/modules/changeBackground/alterBody */ "./src/modules/changeBackground/alterBody.js");
-/* harmony import */ var _src_modules_index__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./src/modules/index */ "./src/modules/index.js");
+/* harmony import */ var _src_modules__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./src/modules */ "./src/modules/index.js");
 
 
 

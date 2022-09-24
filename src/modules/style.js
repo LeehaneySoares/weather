@@ -11,6 +11,7 @@ const style = `
       display: flex;
       flex-direction: column;
       justify-content: center;
+      margin: 0 auto;
       padding: var(--spacing_inset-sm);
     }
 

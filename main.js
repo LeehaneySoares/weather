@@ -11,5 +11,5 @@ import './src/css/style.css'
 
 import './src/modules/changeBackground/dayHours'
 import './src/modules/changeBackground/alterBody'
-import './src/modules/index'
+import './src/modules'
 
