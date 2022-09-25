@@ -104,8 +104,14 @@ style.innerHTML = `
       flex: 1;
       flex-direction: column;
       gap: var(--spacing_inset-xs);
+      height: 240px;
       justify-content: center;
       padding: var(--spacing_inset-sm);
+    }
+
+    .weather__temp figcaption,
+    .weather__wind figcaption {
+      text-align: center;
     }
 
     .weather__temp figcaption p,
@@ -157,6 +163,38 @@ style.innerHTML = `
       height: 1px;
       transform-origin: left;
       width: 15px;
+    }
+
+    .weather__anotherInfo {
+      border: var(--border-width-hairline) solid ${textColor};
+      border-radius: var(--border-radius-pill);
+      display: flex;
+      padding: var(--spacing_inset-nano);
+      width: 100%;
+    }
+
+    .weather__feelsLike,
+    .weather__humidity {
+      border-right: var(--border-width-hairline) solid ${textColor};
+    }
+
+    .weather__feelsLike,
+    .weather__humidity,
+    .weather__pressure {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--spacing_inset-nano);
+      width: 100%;
+    }
+
+    .weather__feelsLike img,
+    .weather__humidity img,
+    .weather__pressure img {
+      height: 24px;
+      object-fit: contain;
+      width: 24px;
     }
 `
 

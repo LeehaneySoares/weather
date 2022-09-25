@@ -13,6 +13,7 @@ class Display {
   #tempMin
   #message
   #parent
+  #pressure
   #speedy
   #sunrise
   #sunset
@@ -43,6 +44,10 @@ class Display {
 
   get humidity () {
     return this.#humidity
+  }
+
+  get pressure () {
+    return this.#pressure ??= ''
   }
 
   get speedy () {
@@ -83,6 +88,7 @@ class Display {
       this.#feelsLike = snapshot.main?.feels_like,
       this.#icon = snapshot.weather[0]?.icon,
       this.#humidity = snapshot.main?.humidity,
+      this.#pressure = snapshot.main?.pressure,
       this.#speedy = snapshot.wind?.speed,
       this.#sunrise = snapshot.sys?.sunrise,
       this.#sunset = snapshot.sys?.sunset,

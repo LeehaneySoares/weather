@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <link rel="icon" type="icon/image" href="./public/assets/icons/favicon.png" />
   <title>Weather - Forecast</title>
 </head>
+
 <body>
   <main class="weather__main">
     <section class="weather__container">
@@ -15,17 +17,18 @@
         <button class="weather__button">
           <img />
         </button>
-        <input class="weather__search" name="city" type="search"/>
+        <input class="weather__search" name="city" type="search" />
       </form>
       <div class="weather__warning"></div>
       <div class="weather__info">
         <h2 class="weather__city"></h2>
         <div class="weather__container">
           <figure class="weather__temp">
-            <img src="https://openweathermap.org/img/wn/03d@2x.png"/>
+            <img src="https://openweathermap.org/img/wn/03d@2x.png" />
             <figcaption class="weather__celsius">
               <p>Temperatura</p>
               <span></span>
+              <p class="weather__description"></p>
             </figcaption>
           </figure>
           <figure class="weather__wind">
@@ -38,22 +41,21 @@
               <span class="weather__windInfo">-- <sup>km/h</sup></span>
             </figcaption>
           </figure>
-          <!-- <figure class="weather__wind">
-            <img src="./assets/icons/arrow_up.png" />
-            <figcaption class="weather__velocity">
-              <span></span>
-            </figcaption>
-          </figure> -->
-          <!-- <article class="weather__sys">
-            <div class="weather__sunrise">imagem</div>
-            <div class="weather__sunset">texto</div>
-          </article> -->
         </div>
         <div class="weather__container">
-          <article class="weather__main">
-            <div class="weather__feelsLike"></div>
-            <div class="weather__humidity"></div>
-            <div class="weather__pressure"></div>
+          <article class="weather__anotherInfo">
+            <figure class="weather__feelsLike">
+              <img src="./public/assets/icons/thermal_icon.png" />
+              <ficaption class="weather__feelsLikeInfo"></ficaption>
+            </figure>
+            <figure class="weather__humidity">
+              <img src="./public/assets/icons/humidity_icon.png"/>
+              <ficaption class="weather__humidityInfo"></ficaption>
+            </figure>
+            <figure class="weather__pressure">
+              <img src="./public/assets/icons/pressure_icon.png"/>
+              <ficaption class="weather__pressureInfo"></ficaption>
+            </figure>
           </article>
         </div>
       </div>
@@ -61,4 +63,5 @@
   </main>
   <script src="./public/assets/js/bundle.js"></script>
 </body>
+
 </html>
