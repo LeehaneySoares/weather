@@ -1,55 +1,33 @@
 import { provider } from './changeBackground'
-import getInputValue from './getInputValue'
+import Display from './display'
 import Search from './search'
-import template from './template'
 
-class App extends HTMLElement {
-  #currentHour
+class App {
+  #display
   #search
-
-  get currentHour () {
-    return this.#currentHour ??= provider?.currentHour
-  }
-
-  get icon () {
-    return this.shadowRoot.querySelector('img')
-  }
-
-  get input () {
-    return this.shadowRoot.querySelector('input')
+  
+  get display () {
+    return this.#display ??= Display.create()
   }
 
   get search () {
-    return this.#search ??= Search.create(this)
-  }
-  
-  get title () {
-    return this.shadowRoot.querySelector('h1')
+    return this.#search ??= Search.create()
   }
 
   constructor () {
-    super()
     this.build()
     this.mount()
   }
 
   build () {
-    this.attachShadow({ mode: 'open' })
-    this.shadowRoot.append(template.content.cloneNode(true))
-    this.shadowRoot
-      .querySelector('.weather__form')
-      .addEventListener('submit', (event) => getInputValue(event, this))
-    return this
-  }
-
-  changeSearch (wordSearch) {
-    this.search.changeQuery(wordSearch)
+    Display.create(this)
+    Search.create(this)
     return this
   }
 
   mount () {
-    this.title.innerText = this.getAttribute('title')
-    this.icon.src = this.currentHour?.iconSearch
+    const { iconSearch } = provider.currentHour
+    document.querySelector('.weather__button img').src = iconSearch
     return this
   }
 
@@ -57,7 +35,5 @@ class App extends HTMLElement {
     return new App()
   }
 }
-
-customElements.define('app-interface', App)
 
 export default App.create()

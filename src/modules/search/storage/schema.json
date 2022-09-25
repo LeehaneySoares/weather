@@ -1,7 +1,7 @@
 {
   "key": "fbd0f3e19541c5fbee2558a34228f79f",
-  "api": {
-    "geolocation": "http://api.openweathermap.org/geo/1.0/direct?q=",
-    "meteorologic": "https://api.openweathermap.org/data/2.5/weather?"
-  }
+  "geolocation": "http://api.openweathermap.org/geo/1.0/direct?q=",
+  "metereologic": "https://api.openweathermap.org/data/2.5/weather?",
+  "lang": "pt_br",
+  "units": "metric"
 }

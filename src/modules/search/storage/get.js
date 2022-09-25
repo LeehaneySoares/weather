@@ -1,15 +1,25 @@
-import schema from './schema.json'
+import settings from './settings'
 
 const actions = {}
 
 const geolocation = (target) => (
-  fetch(`${schema.api.geolocation}${target.query}&limit=${target.limit}&appid=${schema.key}`)
+  fetch(`${settings(target).api.geolocation}`)
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then(json => target.changeCoordinates(json[0] || []))
+)
+
+const metereologic = (location, target) => (
+  fetch(`${settings(target).api.metereologic}`)
+    .then(response => response.json())
+    .then(json => (
+      json.cod !== '400' &&
+      target.display.changeInfo(location, json)
+    ))
 )
 
 Object.assign(actions, {
-  geolocation
+  geolocation,
+  metereologic
 })
 
 export default actions
