@@ -2,10 +2,10 @@ const path = require('path')
 
 module.exports = {
   mode: 'production',
-  entry: './src/main.js',
+  entry: './main.js',
   output: {
     path: path.resolve(__dirname, 'public', 'assets', 'js'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
