@@ -1,14 +1,15 @@
-const weatherInfo = document.querySelector('.weather__info')
-const weatherCity = document.querySelector('.weather__city')
-const weatherTemp = document.querySelector('.weather__temp img')
-const weatherWindIcon = document.querySelector('.weather__windIcon')
-const weatherWindInfo = document.querySelector('.weather__windInfo')
-const weatherCelsius = document.querySelector('.weather__celsius span')
-const weatherDescription = document.querySelector('.weather__description')
-const weatherFeelsLike = document.querySelector('.weather__feelsLikeInfo')
-const weatherPressure = document.querySelector('.weather__pressureInfo')
-const weatherHumidity = document.querySelector('.weather__humidityInfo')
+const $ = (element) => document.querySelector(element)
 
+const weatherInfo = $('.weather__info')
+const weatherCity = $('.weather__city')
+const weatherTemp = $('.weather__temp img')
+const weatherWindIcon = $('.weather__windIcon')
+const weatherWindInfo = $('.weather__windInfo')
+const weatherCelsius = $('.weather__celsius span')
+const weatherDescription = $('.weather__description')
+const weatherFeelsLike = $('.weather__feelsLikeInfo')
+const weatherPressure = $('.weather__pressureInfo')
+const weatherHumidity = $('.weather__humidityInfo')
 
 export default function (target) {
   const urlIcon = `https://openweathermap.org/img/wn/${target.icon}@2x.png`
