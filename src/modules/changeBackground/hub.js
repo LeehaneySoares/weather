@@ -1,24 +1,30 @@
+import afternoon from './assets/afternoon.jpg'
+import morning from './assets/morning.jpg'
+import night from './assets/night.jpg'
+import search from './assets/search.png'
+import searchOnColor from './assets/search_onColor.png'
+
 export default {
   MORNING: {
-    image: './public/assets/images/morning.jpg',
+    image: morning,
     hours: '06:00 BRT',
     backgroundColor: 'var(--color-high-light)',
     textColor: 'var(--color-low-dark)',
-    iconSearch: './public/assets/icons/search.png'
+    iconSearch: search
   },
   AFTERNOON: {
-    image: './public/assets/images/afternoon.jpg',
+    image: afternoon,
     hours: '13:00 BRT',
     backgroundColor: 'var(--color-warning-light)',
     textColor: 'var(--color-high-light)',
-    iconSearch: './public/assets/icons/search_onColor.png'
+    iconSearch: searchOnColor
   },
   NIGHT: {
-    image: './public/assets/images/night.jpg',
+    image: night,
     hours: '18:00 BRT',
     midNight: '00:00 BRT',
     backgroundColor: 'var(--color-primary-dark)',
     textColor: 'var(--color-high-light)',
-    iconSearch: './public/assets/icons/search_onColor.png'
+    iconSearch: searchOnColor
   }
 }

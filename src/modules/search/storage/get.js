@@ -3,13 +3,13 @@ import settings from './settings'
 const actions = {}
 
 const geolocation = (target) => (
-  fetch(`${settings(target).api.geolocation}`)
+  fetch(`${settings.api.geolocation(target)}`)
     .then(response => response.json())
     .then(json => target.changeCoordinates(json[0] || []))
 )
 
 const metereologic = (location, target) => (
-  fetch(`${settings(target).api.metereologic}`)
+  fetch(`${settings.api.metereologic(target)}`)
     .then(response => response.json())
     .then(json => (
       json.cod !== '400' &&

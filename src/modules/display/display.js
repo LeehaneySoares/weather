@@ -94,9 +94,9 @@ class Display {
       this.#sunset = snapshot.sys?.sunset,
       this.#temp = snapshot.main?.temp,
       this.#tempMin = snapshot.main?.temp_min,
-      this.hideMessage()
+      this.hideMessage(),
+      mountDisplay(this)
     )
-    mountDisplay(this)
     return this
   }
 

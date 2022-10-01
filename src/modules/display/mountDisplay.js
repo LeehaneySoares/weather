@@ -15,7 +15,7 @@ export default function (target) {
   const urlIcon = `https://openweathermap.org/img/wn/${target.icon}@2x.png`
   weatherTemp.src = urlIcon
   weatherCity.innerHTML = `${target.city}, ${target.country}`
-  weatherCelsius.innerHTML = `${target.temp.toFixed(2)} <sup>°C</sup>`
+  weatherCelsius.innerHTML = `${target.temp} <sup>°C</sup>`
   weatherWindIcon.style.transform = `rotate(${target.deg}deg)`
   weatherWindInfo.innerHTML = `${target.speedy} <sup>km/h</sup>`
   weatherDescription.innerHTML = target.description
